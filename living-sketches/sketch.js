@@ -1,15 +1,16 @@
 // original images
 let scannedImages = [];
+let scannedImages2 = [];
 
 // cropped parts of images
 let apple = [];
-//let rockets;
+let yellow = [];
 //let doodleYellow;
 //let doodleCyan;
 
 // current indices for animation
 let currentAppleIndex = 0;
-//let currentRocketIndex = 0;
+let currentYellowIndex = 6;
 //let currentDoodleYellowIndex = 0;
 //let currentDoodleCyanIndex = 0;
 
@@ -27,14 +28,22 @@ async function setup() {
   }
   scannedImages = await Promise.all(imagePromises);
 
+  const imagePromises2 = [];
+  for (let i = 6; i <= 8; i++) {
+    imagePromises2.push(loadImage("assets/image" + i + ".jpg"));
+  }
+  scannedImages2 = await Promise.all(imagePromises2);
+
+
   // erase background and crop images
   // how to use: eraseBackground(imageArray, threshold);
   eraseBackground(scannedImages, 10);
+  eraseBackground(scannedImages2, 10);
 
   // crop parts of images
   // how to use: crop(imageArray, x, y, width, height);
   apple = crop(scannedImages, 0, 0, 1000, 800);
-  //rockets = crop(scannedImages, 1600, 90, 650, 420);
+  yellow = crop(scannedImages2, 0, 0, 1000, 700);
   //doodleYellow = crop(scannedImages, 1514, 1300, 830, 300);
   //doodleCyan = crop(scannedImages, 100, 1300, 366, 311);
 }
@@ -46,6 +55,10 @@ function draw() {
   currentAppleIndex = floor((frameCount / 5) % apple.length);
   imageMode(CENTER);
   image(apple[currentAppleIndex], mouseX, mouseY, 400, 340);
+
+  currentYellowIndex = floor((frameCount / 5) % yellow.length);
+  imageMode(CENTER);
+  image(yellow[currentYellowIndex], mouseX + 200, mouseY, 400, 340);
   // EXAMPLES: APPLE
   // update apple index
   //currentAppleIndex = floor((frameCount / 20) % apple.length);
