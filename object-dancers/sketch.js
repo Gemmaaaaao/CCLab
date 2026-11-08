@@ -37,8 +37,10 @@ class GemmaDancer {
     this.y = startY;
     this.y1 = startY;
     this.color = "gray";
+    this.color2 = "coral";
     this.x2 = -10;
     this.y2 = 45;
+
     // add properties for your dancer here:
     //..
     //..
@@ -51,6 +53,7 @@ class GemmaDancer {
     this.y2 = 45 + sin(frameCount * 0.1) * 2;
     this.y3 = 40 + sin(frameCount * 0.1) * 2;
     this.angle = sin(frameCount * 0.1) * 0.3;
+    this.angle2 = sin(frameCount * 0.1) * 2
     this.y1 = 10 + sin(frameCount * 0.1) * 2;
     push();
     stroke(this.color);
@@ -68,7 +71,7 @@ class GemmaDancer {
     line(40, 0, 40, 55);
     push();
     rotate(this.angle);
-    stroke("coral");
+    stroke(this.color2);
     noFill();
     arc(63, 5, 50, 40, 15, 0, PI);
     pop();
@@ -87,16 +90,16 @@ class GemmaDancer {
     fill(this.color);
     triangle(-60, this.y1, 60, 45, 60, -40)
     fill(0);
-    circle(-20, 3 + sin(frameCount * 0.1) * 2, 5);
-    circle(-24, -2 + sin(frameCount * 0.1) * 2, 5);
-    fill("coral");
+    circle(-20, 3 + this.angle2, 5);
+    circle(-24, -2 + this.angle2, 5);
+    fill(this.color2);
     noStroke();
     arc(-55, this.y1, 8, 15, 0, PI);
     //stroke(0);
     fill(this.color);
-    circle(-10, -12 + sin(frameCount * 0.1) * 2, 10);
+    circle(-10, -12 + this.angle2, 10);
     stroke(0);
-    arc(0, 0 + sin(frameCount * 0.1) * 2, 10, 10, PI, 0);
+    arc(0, 0 + this.angle2, 10, 10, PI, 0);
 
 
     // ⬆️ draw your dancer above ⬆️
