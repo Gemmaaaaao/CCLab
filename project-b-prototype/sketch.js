@@ -139,7 +139,7 @@ class Flower {
 
     let dst2 = dist(mouseX, mouseY, this.x, this.y);
 
-    if (dst2 < 40) {
+    if (dst2 < 50) {
 
       this.x2 = (this.x - mouseX) * 0.5;
       this.y2 = (this.y - mouseY) * 0.5;
@@ -152,7 +152,7 @@ class Flower {
 
 
     } else {
-      this.speed = lerp(this.speed, 0, 0.05)
+      this.speed = lerp(this.speed, 0, 0.06)
 
 
     }
